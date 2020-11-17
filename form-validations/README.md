@@ -29,3 +29,5 @@
     handleSubmit
 
 ### 3.5 Validation Schema
+
+### 3.6 Error Handling

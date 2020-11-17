@@ -76,6 +76,7 @@ export class FormikForm extends Component {
                                     onBlur={handleBlur}
                                     value={values.userName}
                                 />
+                                <span className='help-block text-danger'>{errors.userName && touched.userName && errors.userName}</span>
                             </div>
 
                             <div className='form-group'>
@@ -88,6 +89,7 @@ export class FormikForm extends Component {
                                     onBlur={handleBlur}
                                     value={values.email}
                                 />
+                                <span className='help-block text-danger'>{errors.email && touched.email && errors.email}</span>
                             </div>
 
                             <div className='form-group'>
@@ -100,6 +102,7 @@ export class FormikForm extends Component {
                                     onBlur={handleBlur}
                                     value={values.password}
                                 />
+                                <span className='help-block text-danger'>{errors.password && touched.password && errors.password}</span>
                             </div>
 
                             <div className='form-group'>
@@ -112,6 +115,7 @@ export class FormikForm extends Component {
                                     onBlur={handleBlur}
                                     value={values.confirmPassword}
                                 />
+                                <span className='help-block text-danger'>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</span>
                             </div>
                         </form>
                     )}
