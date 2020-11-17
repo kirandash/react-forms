@@ -21,12 +21,40 @@ export class FormikForm extends Component {
         })
     }
 
+    validationSchema = Yup.object().shape({
+        userName: Yup.string()
+            .min(6, "Username should be between 6 and 15 characters")
+            .max(15, "Username should be between 6 and 15 characters")
+            .required("Username is required"),
+        
+        email: Yup.string()
+            .email("Invalid email address")
+            .required("Email is required"),
+        
+        password: Yup.string()
+            .min(8, "Should be at least 8 characters")
+            .required("Password is required"),
+
+        confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], "Passwords don't match")
+            .required("Password is required"),
+    })
+
     render() {
         return (
             <div>
                 <h5>Formik Form</h5>
                 <Formik
                     initialValues={{ userName: '', email: '', password: '', confirmPassword: '', isSubmitting: true }}
+                    validationSchema={this.validationSchema}
+                    onSubmit={(values, {setSubmitting, resetForm}) => {
+                        setTimeout(() => {
+                            console.log(values);
+                            setSubmitting(true)
+                            resetForm()
+                            setSubmitting(false)
+                        }, 400)
+                    }}
                 >
                     {({
                         values,
