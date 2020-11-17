@@ -34,3 +34,6 @@
 
 ### 3.7 Handle State, Button Group - Bug
 1. Note: handleChange overwrite needs to be implemented. Not working properly.
+
+### 3.8 Display Data
+1. Set data into state before clearing.

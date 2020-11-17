@@ -50,6 +50,12 @@ export class FormikForm extends Component {
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         setTimeout(() => {
                             console.log(values);
+                            this.setState({
+                                userName: values.userName,
+                                email: values.email,
+                                password: values.password,
+                                confirmPassword: values.confirmPassword
+                            })
                             setSubmitting(true)
                             resetForm()
                             setSubmitting(false)
