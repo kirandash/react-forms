@@ -15,3 +15,6 @@
 3. Docs: https://formik.org/docs/overview
 
 ### 3.2 Formik Template
+
+### 3.3 onChange and State
+1. use formik api to control on change events and set state using values
