@@ -28,8 +28,16 @@ export class FormikForm extends Component {
                 <Formik
                     initialValues={{ userName: '', email: '', password: '', confirmPassword: '', isSubmitting: true }}
                 >
-                    {({values, handleChange}) => (
-                        <form noValidate>
+                    {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        handleReset,
+                        handleSubmit
+                    }) => (
+                        <form onSubmit={handleSubmit} noValidate>
                             <div className='form-group'>
                                 <label htmlFor='userName'>User Name</label>
                                 <input
@@ -37,6 +45,7 @@ export class FormikForm extends Component {
                                     type='text'
                                     name='userName'
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     value={values.userName}
                                 />
                             </div>
@@ -48,6 +57,7 @@ export class FormikForm extends Component {
                                     type='text'
                                     name='email'
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     value={values.email}
                                 />
                             </div>
@@ -59,6 +69,7 @@ export class FormikForm extends Component {
                                     type='text'
                                     name='password'
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     value={values.password}
                                 />
                             </div>
@@ -70,6 +81,7 @@ export class FormikForm extends Component {
                                     type='text'
                                     name='confirmPassword'
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     value={values.confirmPassword}
                                 />
                             </div>

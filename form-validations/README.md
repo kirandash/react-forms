@@ -18,3 +18,12 @@
 
 ### 3.3 onChange and State
 1. use formik api to control on change events and set state using values
+
+### 3.4 Formik API
+1. https://formik.org/docs/api/formik
+2. values,
+    errors,
+    touched,
+    handleBlur,
+    handleReset,
+    handleSubmit
