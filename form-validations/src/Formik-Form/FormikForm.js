@@ -26,11 +26,11 @@ export class FormikForm extends Component {
             .min(6, "Username should be between 6 and 15 characters")
             .max(15, "Username should be between 6 and 15 characters")
             .required("Username is required"),
-        
+
         email: Yup.string()
             .email("Invalid email address")
             .required("Email is required"),
-        
+
         password: Yup.string()
             .min(8, "Should be at least 8 characters")
             .required("Password is required"),
@@ -47,7 +47,7 @@ export class FormikForm extends Component {
                 <Formik
                     initialValues={{ userName: '', email: '', password: '', confirmPassword: '', isSubmitting: true }}
                     validationSchema={this.validationSchema}
-                    onSubmit={(values, {setSubmitting, resetForm}) => {
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
                         setTimeout(() => {
                             console.log(values);
                             setSubmitting(true)
@@ -60,66 +60,86 @@ export class FormikForm extends Component {
                         values,
                         errors,
                         touched,
+                        dirty,
+                        isSubmitting,
                         handleChange,
                         handleBlur,
                         handleReset,
                         handleSubmit
                     }) => (
-                        <form onSubmit={handleSubmit} noValidate>
-                            <div className='form-group'>
-                                <label htmlFor='userName'>User Name</label>
-                                <input
-                                    className='form-control'
-                                    type='text'
-                                    name='userName'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.userName}
-                                />
-                                <span className='help-block text-danger'>{errors.userName && touched.userName && errors.userName}</span>
-                            </div>
+                            <form onSubmit={handleSubmit} noValidate>
+                                <div className='form-group'>
+                                    <label htmlFor='userName'>User Name</label>
+                                    <input
+                                        className='form-control'
+                                        type='text'
+                                        name='userName'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.userName}
+                                    />
+                                    <span className='help-block text-danger'>{errors.userName && touched.userName && errors.userName}</span>
+                                </div>
 
-                            <div className='form-group'>
-                                <label htmlFor='email'>Email</label>
-                                <input
-                                    className='form-control'
-                                    type='text'
-                                    name='email'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-                                />
-                                <span className='help-block text-danger'>{errors.email && touched.email && errors.email}</span>
-                            </div>
+                                <div className='form-group'>
+                                    <label htmlFor='email'>Email</label>
+                                    <input
+                                        className='form-control'
+                                        type='text'
+                                        name='email'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+                                    />
+                                    <span className='help-block text-danger'>{errors.email && touched.email && errors.email}</span>
+                                </div>
 
-                            <div className='form-group'>
-                                <label htmlFor='password'>password</label>
-                                <input
-                                    className='form-control'
-                                    type='text'
-                                    name='password'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password}
-                                />
-                                <span className='help-block text-danger'>{errors.password && touched.password && errors.password}</span>
-                            </div>
+                                <div className='form-group'>
+                                    <label htmlFor='password'>password</label>
+                                    <input
+                                        className='form-control'
+                                        type='text'
+                                        name='password'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.password}
+                                    />
+                                    <span className='help-block text-danger'>{errors.password && touched.password && errors.password}</span>
+                                </div>
 
-                            <div className='form-group'>
-                                <label htmlFor='confirmPassword'>confirm Password</label>
-                                <input
-                                    className='form-control'
-                                    type='text'
-                                    name='confirmPassword'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.confirmPassword}
-                                />
-                                <span className='help-block text-danger'>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</span>
-                            </div>
-                        </form>
-                    )}
+                                <div className='form-group'>
+                                    <label htmlFor='confirmPassword'>confirm Password</label>
+                                    <input
+                                        className='form-control'
+                                        type='text'
+                                        name='confirmPassword'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.confirmPassword}
+                                    />
+                                    <span className='help-block text-danger'>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</span>
+                                </div>
+
+                                <div className='btn-group'>
+                                    <button className='btn btn-primary' type='submit' disabled={isSubmitting}>
+                                        Submit
+                                    </button>
+                                    <button
+                                        disabled={!dirty}
+                                        onClick={handleReset}
+                                        type='button'
+                                        className='btn btn-danger'>
+                                        Reset
+                                    </button>
+                                </div>
+                            </form>
+                        )}
                 </Formik>
+
+                <p>username: {this.state.userName}</p>
+                <p>email: {this.state.email}</p>
+                <p>password: {this.state.password}</p>
+                <p>confirm password: {this.state.confirmPassword}</p>
             </div>
         )
     }

@@ -31,3 +31,6 @@
 ### 3.5 Validation Schema
 
 ### 3.6 Error Handling
+
+### 3.7 Handle State, Button Group - Bug
+1. Note: handleChange overwrite needs to be implemented. Not working properly.
